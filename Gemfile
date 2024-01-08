@@ -27,3 +27,6 @@ group :development do
   # gem "spring"
 end
 
+gem 'bootstrap', '~> 5.3.2'
+gem 'sassc-rails', '>= 2.1.2'
+gem 'bootstrap-sass'
