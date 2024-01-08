@@ -1,0 +1,12 @@
+
+    <div class="card" style="width: 18rem;">
+        
+        <div class="card-body">
+            <h5 class="card-title"><%= article.title %></h5>
+            <p class="card-text"><%= truncate(article.body, length: 30) %></p>
+            <%= link_to 'Ler', article, class: "btn btn-primary"%>
+
+        </div>
+  
+    </div>
+
