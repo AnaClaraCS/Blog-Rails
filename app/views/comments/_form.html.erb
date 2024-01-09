@@ -1,19 +1,37 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
+  <div class="mb-3 row align-items-center">
+    <div class="col-auto">
+      <%= form.label :commenter, class: "form-label" %><br>
+    </div>
+    <div class="col">
+      <%= form.text_field :commenter, class: "form-control" %>
+    </div>
+  </div>
 
-  <p>
-  <%= form.label :status %><br>
-  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-</p>
+  <div class="mb-3">
+    <%= form.label :body, class: "form-label" %><br>
+    <%= form.text_area :body , class: "form-control" %>
+  </div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="mb-3 row align-items-center">
+    <div class="col-auto">
+      <%= form.label :status %><br>
+    </div>
+    <div class="btn-group col-auto" role="group" aria-label="Basic radio toggle button group">
+      <%= form.radio_button :status, 'public', id: 'btnradio-public', checked: 'public', class: "btn-check" %>
+      <%= form.label :status, 'Público', class: 'btn btn-outline-primary m-0', for: 'btnradio-public' %>
+
+      <%= form.radio_button :status, 'private', id: 'btnradio-private', class: "btn-check" %>
+      <%= form.label :status, 'Privado', class: 'btn btn-outline-primary m-0', for: 'btnradio-private' %>
+
+      <%= form.radio_button :status, 'archived', id: 'btnradio-archived', class: "btn-check" %>
+      <%= form.label :status, 'Arquivado', class: 'btn btn-outline-primary m-0', for: 'btnradio-archived' %>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center mb-3">
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+
+
 <% end %>
