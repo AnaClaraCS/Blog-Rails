@@ -1,18 +1,43 @@
-<h1><%= @article.title%></h1>
+<div class="container-artigo" >
+    <div class="row">
+        <div class="col">
+            <h1><%= @article.title%></h1>
 
-<p><%= @article.body %></p>
+            <p><%= @article.body %></p>
+        </div>
+        <div class="col-2">
+            <%= link_to "Editar", edit_article_path(@article), class:"btn btn-primary"%>
 
-<%= link_to "Editar", edit_article_path(@article) %>
+            <%= button_to "Apagar", article_path(@article),
+                            method: :delete,
+                            data: { confirm: "Are you sure?" },
+                            class: "btn btn-primary" %>
+        </div>
+    </div>
 
-<%= button_to "Apagar", article_path(@article),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
+    <div>
+        <div class="d-flex">
+            <div class="p-2"><h2>Comentário</h2></div>
+            <div class="ms-auto p-2"><%= link_to 'Adicionar comentário', '#', class: 'btn btn-primary', onclick: 'mostrarFormularioComentario(); return false;' %></div>
+        </div>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
+        <div id="divFormularioComentario" class="collapse show">
+            <div class="card card-body">
+                <%= render 'comments/form' %>  
+            </div>
+        </div>
+        
+        <script>
+        function mostrarFormularioComentario() {
+            var divFormulario = document.getElementById('divFormularioComentario');
+            divFormulario.classList.toggle('show');
+        }
+        </script>
+    </div>
 
-<h2>Add a comment:</h2>
+    <div>
+        <%= render @article.comments %>
+    </div>
 
-<%= render 'comments/form' %>
-
-<p><%= link_to "Voltar", root_path %></p>
+    
+</div>
