@@ -1,23 +1,23 @@
 <%= form_with model: article do |form| %>
   <div>
-    <%= form.label :title, class: "form-label" %><br>
+    <%= form.label :title, class: "form-label h4" %>
     <%= form.text_field :title, class: "form-control" %>
     <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> <%= message %></div>
     <% end %>
   </div>
-
+  <br>
   <div>
-    <%= form.label :body, class: "form-label" %><br>
-    <%= form.text_area :body, class: "form-control"  %><br>
+    <%= form.label :body, class: "form-label h4" %>
+    <%= form.text_area :body, class: "form-control"  %>
     <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-danger"><i class="bi bi-exclamation-circle-fill"></i> <%= message %></div>
     <% end %>
   </div>
-
+  <br>
   <div class="mb-3 row align-items-center">
     <div class="col-auto">
-      <%= form.label :status %><br>
+      <%= form.label :status, class: "form-label h4"  %><br>
     </div>
     <div class="btn-group col-auto" role="group" aria-label="Basic radio toggle button group">
       <%= form.radio_button :status, 'public', id: 'btnradio-public', checked: true, class: "btn-check" %>
